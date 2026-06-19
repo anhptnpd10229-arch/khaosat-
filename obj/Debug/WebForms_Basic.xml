@@ -1,0 +1,214 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+KHAOSAT
+</name>
+</assembly>
+<members>
+<member name="T:KHAOSAT.My.MyWebExtension">
+ <summary>
+ Module used to define the properties that are available in the My Namespace for Web projects.
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="P:KHAOSAT.My.MyWebExtension.Computer">
+ <summary>
+ Returns information about the host computer.
+ </summary>
+</member>
+<member name="P:KHAOSAT.My.MyWebExtension.User">
+ <summary>
+ Returns information for the current Web user.
+ </summary>
+</member>
+<member name="P:KHAOSAT.My.MyWebExtension.Request">
+ <summary>
+ Returns Request object.
+ </summary>
+</member>
+<member name="P:KHAOSAT.My.MyWebExtension.Response">
+ <summary>
+ Returns Response object.
+ </summary>
+</member>
+<member name="P:KHAOSAT.My.MyWebExtension.Log">
+ <summary>
+ Returns the Asp log object.
+ </summary>
+</member>
+<member name="T:KHAOSAT.KhaoSatData">
+ <summary>
+ Nguồn dữ liệu chuẩn (single source of truth) cho phiếu khảo sát chất lượng dịch vụ.
+ Danh sách tiêu chí đọc từ bảng dbo.KS_TieuChi (quản lý qua trang quản trị).
+ Thang điểm cố định. Dùng chung cho trang nhập liệu và trang kết quả.
+ </summary>
+</member>
+<member name="T:KHAOSAT.KhaoSatData.TieuChi">
+ <summary>Một tiêu chí đánh giá.</summary>
+</member>
+<member name="T:KHAOSAT.KhaoSatData.Nhom">
+ <summary>Một nhóm tiêu chí.</summary>
+</member>
+<member name="P:KHAOSAT.KhaoSatData.MucDiem">
+ <summary>Nhãn 4 mức điểm (index 1..4).</summary>
+</member>
+<member name="M:KHAOSAT.KhaoSatData.TenMucDiem(System.Int32)">
+ <summary>Trả về nhãn mức điểm theo điểm 1..4.</summary>
+</member>
+<member name="M:KHAOSAT.KhaoSatData.GetNhom">
+ <summary>
+ Trả về 1 nhóm "II. Đánh giá chi tiết" chứa các tiêu chí đang bật (IsActive=1)
+ trong bảng dbo.KS_TieuChi, sắp theo ThuTu. Cache theo từng request để tránh
+ đọc DB nhiều lần; mỗi request mới sẽ lấy dữ liệu mới nhất (tiêu chí vừa thêm).
+ </summary>
+</member>
+<member name="M:KHAOSAT.KhaoSatData.TongTieuChi">
+ <summary>Tổng số tiêu chí đang bật.</summary>
+</member>
+<member name="M:KHAOSAT.KhaoSatData.NoiDungTheoMa(System.String)">
+ <summary>Tra cứu nội dung tiêu chí theo mã.</summary>
+</member>
+<member name="M:KHAOSAT.KhaoSat.Nz(System.String)">
+ <summary>Chuẩn hóa chuỗi: trả về DBNull nếu rỗng, ngược lại trả chuỗi đã Trim.</summary>
+</member>
+<member name="F:KHAOSAT.KhaoSat._txtHoTen">
+<summary>txtHoTen control.</summary>
+</member>
+<member name="F:KHAOSAT.KhaoSat._txtChucVu">
+<summary>txtChucVu control.</summary>
+</member>
+<member name="F:KHAOSAT.KhaoSat._txtCongTy">
+<summary>txtCongTy control.</summary>
+</member>
+<member name="F:KHAOSAT.KhaoSat._txtLienHe">
+<summary>txtLienHe control.</summary>
+</member>
+<member name="F:KHAOSAT.KhaoSat._txtDichVu">
+<summary>txtDichVu control.</summary>
+</member>
+<member name="F:KHAOSAT.KhaoSat._txtTenTau">
+<summary>txtTenTau control.</summary>
+</member>
+<member name="F:KHAOSAT.KhaoSat._txtLoaiHang">
+<summary>txtLoaiHang control.</summary>
+</member>
+<member name="F:KHAOSAT.KhaoSat._txtThoiGian">
+<summary>txtThoiGian control.</summary>
+</member>
+<member name="F:KHAOSAT.KhaoSat._rptNhom">
+<summary>rptNhom control.</summary>
+</member>
+<member name="F:KHAOSAT.KhaoSat._btnGui">
+<summary>btnGui control.</summary>
+</member>
+<member name="M:KHAOSAT.KetQuaKhaoSat.BuildJson(System.Data.DataTable,System.Data.DataTable)">
+ <summary>Tạo JSON { id: { header..., Details:[...] } } cho modal chi tiết.</summary>
+</member>
+<member name="M:KHAOSAT.KetQuaKhaoSat.NzStr(System.Object)">
+ <summary>Trả về chuỗi an toàn từ object DB (DBNull -> "").</summary>
+</member>
+<member name="M:KHAOSAT.KetQuaKhaoSat.BadgeClass(System.String)">
+ <summary>Lớp badge theo mức hài lòng chung.</summary>
+</member>
+<member name="F:KHAOSAT.KetQuaKhaoSat._litTong">
+<summary>litTong control.</summary>
+</member>
+<member name="F:KHAOSAT.KetQuaKhaoSat._litDiemTB">
+<summary>litDiemTB control.</summary>
+</member>
+<member name="F:KHAOSAT.KetQuaKhaoSat._litPctHaiLong">
+<summary>litPctHaiLong control.</summary>
+</member>
+<member name="F:KHAOSAT.KetQuaKhaoSat._litPctTiepTuc">
+<summary>litPctTiepTuc control.</summary>
+</member>
+<member name="F:KHAOSAT.KetQuaKhaoSat._btnExcel">
+<summary>btnExcel control.</summary>
+</member>
+<member name="F:KHAOSAT.KetQuaKhaoSat._pnlEmpty">
+<summary>pnlEmpty control.</summary>
+</member>
+<member name="F:KHAOSAT.KetQuaKhaoSat._pnlTable">
+<summary>pnlTable control.</summary>
+</member>
+<member name="F:KHAOSAT.KetQuaKhaoSat._rptPhieu">
+<summary>rptPhieu control.</summary>
+</member>
+<member name="F:KHAOSAT.KetQuaKhaoSat._litJson">
+<summary>litJson control.</summary>
+</member>
+<member name="F:KHAOSAT.ThemTieuChi._txtTen">
+<summary>txtTen control.</summary>
+</member>
+<member name="F:KHAOSAT.ThemTieuChi._btnLuu">
+<summary>btnLuu control.</summary>
+</member>
+<member name="F:KHAOSAT.ThemTieuChi._rptTieuChi">
+<summary>rptTieuChi control.</summary>
+</member>
+<member name="F:KHAOSAT.SiteMaster._MainContent">
+<summary>
+MainContent control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:KHAOSAT.Site_Mobile._Head1">
+<summary>
+Head1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:KHAOSAT.Site_Mobile._HeadContent">
+<summary>
+HeadContent control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:KHAOSAT.Site_Mobile._form1">
+<summary>
+form1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:KHAOSAT.Site_Mobile._FeaturedContent">
+<summary>
+FeaturedContent control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:KHAOSAT.Site_Mobile._MainContent">
+<summary>
+MainContent control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:KHAOSAT.Site_Mobile._ViewSwitcher1">
+<summary>
+ViewSwitcher1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+</members>
+</doc>

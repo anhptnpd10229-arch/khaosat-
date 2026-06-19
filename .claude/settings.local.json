@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(extract-text \"C:\\\\Users\\\\vas.admin\\\\Downloads\\\\css.docx\")",
+      "PowerShell(python --version)",
+      "PowerShell(python3 --version)",
+      "PowerShell(py --version)",
+      "Read(//c/Users/vas.admin/AppData/Roaming/Claude/local-agent-mode-sessions/skills-plugin/121745e2-2ab5-4045-8e4e-d4609a5205b5/9a6e6193-d1a2-4dbb-be1a-a5cc979d6595/skills/docx/**)",
+      "Bash(extract-text \"C:\\\\Users\\\\vas.admin\\\\Downloads\\\\Phiếu khảo sát chất lượng dịch vụ 2026.docx\")",
+      "Bash(pandoc \"C:\\\\Users\\\\vas.admin\\\\Downloads\\\\Phiếu khảo sát chất lượng dịch vụ 2026.docx\" -o \"C:\\\\Users\\\\vas.admin\\\\Downloads\\\\survey_extract.md\")",
+      "Bash(python scripts/office/unpack.py \"C:\\\\Users\\\\vas.admin\\\\Downloads\\\\Phiếu khảo sát chất lượng dịch vụ 2026.docx\" \"C:\\\\Users\\\\vas.admin\\\\Downloads\\\\survey_unpacked\")",
+      "PowerShell($src=\"C:\\\\Users\\\\vas.admin\\\\Downloads\\\\Phiếu khảo sát chất lượng dịch vụ 2026.docx\"; $dst=\"C:\\\\Users\\\\vas.admin\\\\Downloads\\\\survey_unzip\"; if\\(Test-Path $dst\\){Remove-Item $dst -Recurse -Force}; Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory\\($src,$dst\\); Get-ChildItem \"$dst\\\\word\" | Select-Object Name)",
+      "PowerShell($src=\"C:\\\\Users\\\\vas.admin\\\\Downloads\\\\Phiếu khảo sát chất lượng dịch vụ 2026.docx\"; $tmp=\"C:\\\\Users\\\\vas.admin\\\\Downloads\\\\survey_copy.docx\"; Copy-Item $src $tmp -Force; $dst=\"C:\\\\Users\\\\vas.admin\\\\Downloads\\\\survey_unzip\"; if\\(Test-Path $dst\\){Remove-Item $dst -Recurse -Force}; Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory\\($tmp,$dst\\); Get-ChildItem \"$dst\\\\word\" | Select-Object Name)",
+      "Bash(python -c ' *)",
+      "Bash(ls -d Images)",
+      "Bash(ls Images)",
+      "Bash(ls App_Data)"
+    ]
+  }
+}

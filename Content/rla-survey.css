@@ -1,0 +1,802 @@
+/* =========================================================================
+   rla-survey.css — Design system dùng chung cho module Khảo sát
+   Brand #EB8023 · Dark #484848 · border-radius ≤ 12px · mobile-first
+   ========================================================================= */
+
+:root {
+    --rla-brand: #EB8023;
+    --rla-brand-d: #c4661a;
+    --rla-dark: #484848;
+    --rla-border: #e5e7eb;
+    --rla-soft: #fff7ed;
+    --rla-text: #1f2937;
+    --rla-muted: #6b7280;
+    --rla-bg: #f5f6f8;
+
+    --m1: #16a34a; /* Rất hài lòng */
+    --m2: #65a30d; /* Hài lòng */
+    --m3: #f59e0b; /* Chấp nhận được */
+    --m4: #dc2626; /* Không hài lòng */
+}
+
+/* Khung trang khảo sát: nền xám nhẹ, giới hạn bề rộng cho dễ đọc */
+.rla-wrap {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 2px 120px;
+    color: var(--rla-text);
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+/* ---------- Hero ---------- */
+.rla-hero {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    padding: 16px 18px 14px;
+    margin-bottom: 10px;
+    color: #fff;
+    background: var(--rla-dark);
+    box-shadow: 0 6px 18px rgba(15, 23, 42, .12);
+}
+.rla-hero:before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+    background: var(--rla-brand);
+}
+.rla-hero:after {
+    content: "";
+    position: absolute;
+    right: -70px; top: -70px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(235, 128, 35, .20);
+    pointer-events: none;
+}
+.rla-kicker {
+    position: relative; z-index: 1;
+    display: inline-flex; align-items: center; gap: 5px;
+    border-radius: 6px;
+    padding: 2px 8px;
+    margin-bottom: 6px;
+    background: rgba(255, 255, 255, .12);
+    color: #fed7aa;
+    font-size: 11px; font-weight: 800; line-height: 1.2;
+    text-transform: uppercase; letter-spacing: .02em;
+}
+.rla-title {
+    position: relative; z-index: 1;
+    margin: 0;
+    color: #fff;
+    font-size: 20px; font-weight: 900; line-height: 1.28;
+    word-break: break-word;
+}
+.rla-subtitle {
+    position: relative; z-index: 1;
+    max-width: 760px;
+    margin-top: 5px;
+    color: rgba(255, 255, 255, .82);
+    font-size: 12.5px; font-weight: 500; line-height: 1.45;
+}
+
+/* ---------- Card ---------- */
+.rla-card {
+    background: #fff;
+    border: 1px solid var(--rla-border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+}
+.rla-card__head {
+    display: flex; align-items: center; gap: 9px;
+    margin-bottom: 12px;
+}
+.rla-card__num {
+    flex: 0 0 auto;
+    width: 26px; height: 26px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 8px;
+    background: var(--rla-soft);
+    color: var(--rla-brand-d);
+    font-size: 12px; font-weight: 900;
+}
+.rla-card__title {
+    margin: 0;
+    font-size: 14.5px; font-weight: 800; color: var(--rla-dark);
+    line-height: 1.3;
+}
+.rla-section-label {
+    font-size: 12px; font-weight: 800; color: var(--rla-muted);
+    text-transform: uppercase; letter-spacing: .03em;
+    margin: 2px 0 8px;
+}
+
+/* ---------- Form fields (info card) ---------- */
+.rla-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 14px;
+}
+.rla-field { display: flex; flex-direction: column; gap: 0; min-width: 0; }
+.rla-field.col-2 { grid-column: 1 / -1; }
+.rla-label {
+    display: block;
+    font-size: 12px; font-weight: 700; color: var(--rla-dark);
+    margin-bottom: 6px;
+}
+.rla-label .req { color: var(--m4); margin-left: 2px; }
+
+.rla-input, .rla-textarea {
+    width: 100%;
+    max-width: none; /* gỡ giới hạn 280px của Site.css template */
+    border: 1.5px solid var(--rla-border);
+    border-radius: 10px;
+    font-size: 16px; /* chống iOS zoom */
+    color: var(--rla-text);
+    background: #fafbfc;
+    box-sizing: border-box;
+    transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.rla-input {
+    height: 48px;
+    padding: 0 14px;
+}
+.rla-textarea { padding: 10px 14px; resize: vertical; min-height: 70px; line-height: 1.45; }
+.rla-input:focus, .rla-textarea:focus {
+    outline: none;
+    border-color: var(--rla-brand);
+    box-shadow: 0 0 0 3px rgba(235, 128, 35, .18);
+    background: #fff;
+}
+
+/* ---------- Info card redesign (Thông tin khách hàng) ---------- */
+.rla-card--info .rla-card__head { align-items: flex-start; }
+.rla-card__desc {
+    font-size: 12px; color: var(--rla-muted);
+    margin: 2px 0 0; font-weight: 500; line-height: 1.4;
+}
+.rla-info-form { display: flex; flex-direction: column; gap: 20px; }
+.rla-field-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 20px;
+}
+.rla-group-label {
+    grid-column: 1 / -1;
+    font-size: 10.5px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: .07em;
+    color: var(--rla-brand-d);
+    margin: 0;
+    padding-bottom: 7px;
+    border-bottom: 1.5px solid var(--rla-soft);
+}
+.rla-field--full { grid-column: 1 / -1; }
+.rla-input[type="date"] { cursor: pointer; }
+.rla-input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: .55;
+    cursor: pointer;
+    padding-right: 2px;
+}
+
+/* ---------- Thang điểm legend ---------- */
+.rla-legend {
+    display: flex; flex-wrap: wrap; gap: 6px;
+}
+.rla-legend__chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    border-radius: 999px;
+    padding: 4px 10px 4px 8px;
+    font-size: 11.5px; font-weight: 700;
+    color: #fff;
+}
+.rla-legend__chip .dot {
+    width: 16px; height: 16px; border-radius: 50%;
+    background: rgba(255, 255, 255, .35);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 900;
+}
+.rla-legend__chip.m1 { background: var(--m1); }
+.rla-legend__chip.m2 { background: var(--m2); }
+.rla-legend__chip.m3 { background: var(--m3); }
+.rla-legend__chip.m4 { background: var(--m4); }
+
+/* ---------- Tiêu chí item ---------- */
+.rla-item {
+    padding: 12px 0;
+    border-top: 1px dashed #eceef1;
+}
+.rla-item:first-of-type { border-top: 0; padding-top: 2px; }
+.rla-item__text {
+    font-size: 13px; line-height: 1.45; color: var(--rla-text);
+    margin-bottom: 9px;
+}
+.rla-item__text .ma {
+    display: inline-block;
+    color: var(--rla-brand-d); font-weight: 800; margin-right: 4px;
+}
+
+/* Cột phải chứa sao (mobile: block thông thường, nằm dưới text) */
+.rla-item__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+/* Desktop 2 cột: trái=nội dung+diễn giải, phải=sao */
+@media (min-width: 768px) {
+    .rla-item {
+        display: grid;
+        grid-template-columns: 1fr 210px;
+        grid-template-rows: auto auto;
+        column-gap: 28px;
+        align-items: start;
+    }
+    /* text: cột 1, hàng 1 */
+    .rla-item__text {
+        grid-column: 1;
+        grid-row: 1;
+        margin-bottom: 0;
+        align-self: center;
+    }
+    /* stars: cột 2, span 2 hàng — căn giữa dọc */
+    .rla-item__right {
+        grid-column: 2;
+        grid-row: 1 / 3;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+        border-left: 2px dashed #eceef1;
+        padding-left: 20px;
+    }
+    /* diễn giải: cột 1, hàng 2 */
+    .rla-dg {
+        grid-column: 1;
+        grid-row: 2;
+    }
+}
+
+/* ---------- Star rating — đánh giá điểm ----------
+   DOM order: val=1 (4★ Rất hài lòng) → val=4 (1★ Không hài lòng)
+   flex-direction:row-reverse → hiển thị trái=1★ worst, phải=4★ best
+   CSS ~ trick: input[val=1]:checked ~ label lights up ALL 4 labels (4 stars)
+   ---------------------------------------------------------- */
+.rla-rate {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    gap: 3px;
+    align-items: center;
+}
+.rla-rate input { display: none; }
+.rla-rate label {
+    cursor: pointer;
+    font-size: 34px;
+    line-height: 1;
+    color: #d1d5db;
+    transition: transform .18s ease, color .18s ease, text-shadow .18s ease;
+    user-select: none;
+}
+.rla-rate label::before { content: "★"; }
+
+/* Hover: sáng từ ngôi sao đang rê sang các ngôi bên phải */
+.rla-rate label:hover,
+.rla-rate label:hover ~ label {
+    color: #f59e0b;
+    text-shadow: 0 4px 16px rgba(245, 158, 11, .5);
+}
+.rla-rate label:hover { transform: scale(1.22) rotate(-5deg); }
+
+/* Checked: màu theo mức điểm (val=1=tốt nhất, val=4=tệ nhất) */
+.rla-rate input[value="1"]:checked ~ label { color: var(--m1); text-shadow: 0 4px 16px rgba(22,163,74,.45); }
+.rla-rate input[value="2"]:checked ~ label { color: var(--m2); text-shadow: 0 4px 16px rgba(101,163,13,.45); }
+.rla-rate input[value="3"]:checked ~ label { color: var(--m3); text-shadow: 0 4px 16px rgba(245,158,11,.45); }
+.rla-rate input[value="4"]:checked ~ label { color: var(--m4); text-shadow: 0 4px 16px rgba(220,38,38,.45); }
+
+/* Nhãn mức điểm — hiện bên dưới sao, căn giữa */
+.star-hint {
+    display: block;
+    font-size: 11.5px;
+    font-weight: 800;
+    text-align: center;
+    min-height: 16px;
+    letter-spacing: .01em;
+    opacity: 0;
+    transition: opacity .2s ease;
+}
+.star-hint.show { opacity: 1; }
+
+/* Ô diễn giải (ẩn mặc định, trượt hiện khi điểm 3/4) */
+.rla-dg {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height .25s ease, opacity .2s ease, margin-top .2s ease;
+    margin-top: 0;
+}
+.rla-dg.show { max-height: 200px; opacity: 1; margin-top: 9px; }
+.rla-dg textarea {
+    width: 100%;
+    border: 1px solid #fcd9b6;
+    background: var(--rla-soft);
+    border-radius: 10px;
+    padding: 8px 10px;
+    font-size: 16px; line-height: 1.4;
+    resize: vertical; min-height: 56px;
+}
+.rla-dg textarea:focus { outline: none; border-color: var(--rla-brand); box-shadow: 0 0 0 3px rgba(235, 128, 35, .18); }
+.rla-dg__hint { font-size: 11px; color: var(--m4); font-weight: 700; margin-bottom: 4px; }
+
+/* ---------- Segmented chung (tổng thể) ---------- */
+.rla-seg { display: flex; flex-wrap: wrap; gap: 7px; }
+.rla-seg input { position: absolute; opacity: 0; width: 0; height: 0; }
+.rla-seg label {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 42px; padding: 6px 16px;
+    border: 1.5px solid var(--rla-border);
+    border-radius: 10px;
+    background: #fff; cursor: pointer;
+    font-size: 13px; font-weight: 700; color: var(--rla-text);
+    transition: all .15s ease;
+}
+.rla-seg label:hover { border-color: var(--rla-brand); }
+.rla-seg input:checked + label {
+    background: var(--rla-brand); border-color: transparent; color: #fff;
+}
+.rla-seg input:focus-visible + label { box-shadow: 0 0 0 3px rgba(235, 128, 35, .25); }
+
+/* ---------- Sticky progress ---------- */
+.rla-progress {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255, 255, 255, .96);
+    backdrop-filter: blur(6px);
+    border: 1px solid var(--rla-border);
+    border-radius: 12px;
+    padding: 9px 13px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .06);
+}
+.rla-progress__top {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; font-weight: 700; color: var(--rla-dark);
+    margin-bottom: 6px;
+}
+.rla-progress__top b { color: var(--rla-brand-d); }
+.rla-progress__bar { height: 7px; border-radius: 999px; background: #eee; overflow: hidden; }
+.rla-progress__fill {
+    height: 100%; width: 0;
+    background: linear-gradient(90deg, var(--rla-brand), #f59e0b);
+    border-radius: 999px;
+    transition: width .3s ease;
+}
+
+/* ---------- Bottom submit bar ---------- */
+.rla-bottom {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    background: rgba(255, 255, 255, .97);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--rla-border);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, .08);
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+}
+.rla-bottom__inner {
+    max-width: 820px; margin: 0 auto;
+    display: flex; gap: 10px; align-items: center;
+}
+.rla-btn {
+    appearance: none; border: 0; cursor: pointer;
+    border-radius: 11px;
+    font-size: 14px; font-weight: 800;
+    padding: 12px 18px;
+    transition: all .15s ease;
+    display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+}
+.rla-btn-primary {
+    flex: 1;
+    background: var(--rla-brand); color: #fff;
+    box-shadow: 0 6px 16px rgba(235, 128, 35, .35);
+}
+.rla-btn-primary:hover { background: var(--rla-brand-d); }
+.rla-btn-primary:active { transform: scale(.99); }
+.rla-btn-ghost {
+    background: #fff; color: var(--rla-dark);
+    border: 1.5px solid var(--rla-border);
+}
+.rla-btn-ghost:hover { border-color: var(--rla-brand); color: var(--rla-brand-d); }
+
+/* ---------- Dashboard cards (trang kết quả) ---------- */
+.rla-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px; margin-bottom: 10px;
+}
+.rla-stat {
+    background: #fff; border: 1px solid var(--rla-border);
+    border-radius: 12px; padding: 13px 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+}
+.rla-stat__label { font-size: 11.5px; font-weight: 700; color: var(--rla-muted); text-transform: uppercase; letter-spacing: .02em; }
+.rla-stat__value { font-size: 24px; font-weight: 900; color: var(--rla-dark); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.rla-stat__value.brand { color: var(--rla-brand-d); }
+
+/* ---------- Table ---------- */
+.rla-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.rla-table thead th {
+    background: var(--rla-dark); color: #fff;
+    font-size: 11.5px; font-weight: 700;
+    padding: 9px 10px; text-align: left; white-space: nowrap;
+}
+.rla-table tbody td { padding: 9px 10px; border-bottom: 1px solid #eef0f2; vertical-align: middle; }
+.rla-table tbody tr:hover { background: var(--rla-soft); }
+
+.rla-icon-btn {
+    border: 1px solid var(--rla-border); background: #fff;
+    border-radius: 9px; padding: 6px 10px; cursor: pointer;
+    font-size: 12px; font-weight: 700; color: var(--rla-dark);
+    display: inline-flex; align-items: center; gap: 5px;
+    transition: all .15s ease;
+}
+.rla-icon-btn:hover { border-color: var(--rla-brand); color: var(--rla-brand-d); }
+
+.rla-badge {
+    display: inline-block; padding: 3px 9px; border-radius: 999px;
+    font-size: 11px; font-weight: 800; color: #fff;
+}
+.rla-badge.m1 { background: var(--m1); }
+.rla-badge.m2 { background: var(--m2); }
+.rla-badge.m3 { background: var(--m3); }
+.rla-badge.m4 { background: var(--m4); }
+
+/* ---------- Final summary card (Đánh giá tổng thể) ---------- */
+.rla-card--final { border-left: 3px solid var(--rla-brand); }
+.rla-final-section {
+    padding: 12px 0;
+    border-top: 1px solid var(--rla-border);
+}
+.rla-final-section:first-child { border-top: 0; padding-top: 0; }
+.rla-final-label {
+    font-size: 12.5px; font-weight: 800; color: var(--rla-dark);
+    margin: 0 0 9px;
+}
+.rla-card--final .rla-textarea {
+    display: block;
+    resize: none;
+    height: 120px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1.5px dashed #c9d0d8;
+    background: #fafbfc;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--rla-text);
+    transition: border-color .18s, box-shadow .18s;
+}
+.rla-card--final .rla-textarea:focus {
+    outline: none;
+    border-color: var(--rla-brand);
+    border-style: solid;
+    box-shadow: 0 0 0 3px rgba(235,128,35,.18);
+    background: #fff;
+}
+.rla-card--final .rla-textarea::placeholder {
+    color: #b0b7c3;
+    font-style: italic;
+}
+/* Spacing riêng cho section textarea (direct child, không nằm trong .rla-final-top) */
+@media (min-width: 768px) {
+    .rla-card--final > .rla-final-section {
+        padding-top: 18px;
+        padding-bottom: 4px;
+    }
+}
+
+/* Desktop: 2 cột cho hàng trên (hài lòng + tiếp tục) */
+@media (min-width: 768px) {
+    .rla-final-top {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .rla-final-top .rla-final-section {
+        border-top: 0;
+        padding: 0 24px 14px 0;
+    }
+    .rla-final-top .rla-final-section:last-child {
+        padding: 0 0 14px 24px;
+        border-top: 0;
+        border-left: 1px solid var(--rla-border);
+    }
+}
+
+/* Nút gửi in-page: ẩn mobile (dùng thanh cố định), hiện desktop */
+.rla-submit-area { display: none; }
+@media (min-width: 768px) {
+    .rla-submit-area {
+        display: flex;
+        justify-content: center;
+        padding: 16px 0 14px;
+    }
+}
+.rla-btn-submit-form {
+    min-width: 240px;
+    padding: 14px 40px;
+    border-radius: 12px;
+    font-size: 15px; font-weight: 800;
+    background: var(--rla-brand);
+    color: #fff;
+    border: 0; cursor: pointer;
+    box-shadow: 0 6px 20px rgba(235, 128, 35, .38);
+    transition: background .16s ease, box-shadow .16s ease, transform .12s ease;
+    letter-spacing: .02em;
+}
+.rla-btn-submit-form:hover {
+    background: var(--rla-brand-d);
+    box-shadow: 0 8px 28px rgba(235, 128, 35, .48);
+    transform: translateY(-1px);
+}
+.rla-btn-submit-form:active { transform: scale(.98); }
+
+/* ---------- Empty state ---------- */
+.rla-empty { text-align: center; padding: 44px 20px; color: #888; }
+.rla-empty .ico { font-size: 42px; margin-bottom: 12px; }
+.rla-empty .t { font-size: 14px; font-weight: 700; color: var(--rla-dark); }
+.rla-empty .s { font-size: 12px; margin-top: 4px; }
+
+/* ---------- Thank-you ---------- */
+.rla-thanks { text-align: center; padding: 16px 8px; }
+.rla-thanks__check {
+    width: 88px; height: 88px; margin: 6px auto 16px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #34d399, #16a34a);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 12px 30px rgba(22, 163, 74, .35);
+    animation: rla-pop .5s ease;
+}
+.rla-thanks__check svg { width: 46px; height: 46px; }
+@keyframes rla-pop { 0% { transform: scale(.5); opacity: 0; } 60% { transform: scale(1.08); } 100% { transform: scale(1); opacity: 1; } }
+.rla-thanks h2 { font-size: 22px; font-weight: 900; color: var(--rla-dark); margin: 0 0 8px; }
+.rla-thanks p { font-size: 13.5px; color: var(--rla-muted); max-width: 460px; margin: 0 auto 8px; line-height: 1.5; }
+
+/* ---------- Modal chi tiết ---------- */
+.rla-modal-overlay {
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(15, 23, 42, .5);
+    display: none; align-items: flex-end; justify-content: center;
+    padding: 0;
+}
+.rla-modal-overlay.open { display: flex; }
+.rla-modal {
+    background: #fff; width: 100%; max-width: 720px;
+    border-radius: 16px 16px 0 0;
+    max-height: 92dvh; display: flex; flex-direction: column;
+    animation: rla-slideup .25s ease;
+}
+@keyframes rla-slideup { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.rla-modal__head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 16px; border-bottom: 1px solid var(--rla-border);
+}
+.rla-modal__head h3 { margin: 0; font-size: 15px; font-weight: 800; color: var(--rla-dark); }
+.rla-modal__close { width: 38px; height: 38px; border: 0; background: transparent; font-size: 22px; cursor: pointer; color: var(--rla-muted); border-radius: 8px; }
+.rla-modal__close:hover { background: #f3f4f6; }
+.rla-modal__body { padding: 14px 16px; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+
+/* ---------- Responsive ---------- */
+@media (min-width: 768px) {
+    .rla-modal { border-radius: 16px; align-self: center; }
+    .rla-modal-overlay { align-items: center; padding: 20px; }
+}
+
+@media (max-width: 767.98px) {
+    .rla-wrap { font-size: 12.5px; padding-bottom: 110px; }
+    .rla-hero { padding: 12px 14px; }
+    .rla-title { font-size: 17px; }
+    .rla-subtitle { font-size: 11.5px; }
+    .rla-grid { grid-template-columns: 1fr; gap: 9px; }
+    .rla-field-group { grid-template-columns: 1fr; gap: 12px; }
+    .rla-field--full { grid-column: 1; }
+    .rla-info-form { gap: 14px; }
+    .rla-add-form .rla-field { flex: 1 1 100%; min-width: 0; }
+    .rla-add-form__btn .rla-btn { width: 100%; }
+    .rla-lock__row .rla-input { max-width: none; }
+    .rla-card { padding: 12px 13px; }
+    .rla-card__title { font-size: 13.5px; }
+    .rla-item__right { align-items: center; }
+    .rla-rate { gap: 8px; }
+    .rla-rate label { font-size: 30px; }
+    .star-hint { font-size: 11px; }
+    .rla-stat__value { font-size: 21px; }
+
+    /* Bảng -> card view */
+    .rla-table.mobile-card-list thead { display: none; }
+    .rla-table.mobile-card-list tbody tr {
+        display: block; margin-bottom: 9px;
+        border: 1px solid var(--rla-border); border-radius: 12px;
+        padding: 10px 12px; background: #fff;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, .06);
+    }
+    .rla-table.mobile-card-list tbody td {
+        display: flex; justify-content: space-between; gap: 12px;
+        padding: 4px 0; border: 0; font-size: 12.5px; text-align: right;
+    }
+    .rla-table.mobile-card-list tbody td::before {
+        content: attr(data-label);
+        color: #888; font-size: 11px; font-weight: 700;
+        text-align: left; flex-shrink: 0;
+    }
+}
+
+/* =========================================================================
+   QUẢN LÝ TIÊU CHÍ (trang quản trị)
+   ========================================================================= */
+.rla-card--admin { border-left: 3px solid var(--rla-dark); }
+
+/* Mở khóa bằng mật khẩu */
+.rla-lock { text-align: center; padding: 16px 10px 8px; }
+.rla-lock__icon { font-size: 32px; margin-bottom: 8px; }
+.rla-lock__text { font-size: 13px; color: var(--rla-muted); margin: 0 0 14px; }
+.rla-lock__row {
+    display: flex; gap: 10px; justify-content: center;
+    flex-wrap: wrap; max-width: 440px; margin: 0 auto;
+}
+.rla-lock__row .rla-input { max-width: 240px; }
+.rla-lock__err { display: block; color: var(--m4); font-size: 12px; font-weight: 700; margin-top: 12px; }
+
+/* Form thêm tiêu chí */
+.rla-add-form {
+    display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end;
+    padding: 14px; margin-bottom: 14px;
+    background: var(--rla-soft);
+    border: 1px solid #fcd9b6; border-radius: 12px;
+}
+.rla-add-form .rla-field { gap: 6px; }
+.rla-add-form__ma { flex: 0 0 90px; }
+.rla-add-form__ten { flex: 1 1 220px; min-width: 200px; }
+.rla-add-form__tt { flex: 0 0 90px; }
+.rla-add-form__btn { flex: 0 0 auto; }
+.rla-add-form__btn .rla-btn { height: 48px; white-space: nowrap; }
+
+/* Nút / khu vực quản lý tiêu chí */
+.rla-manage-link { padding: 8px 0 4px; text-align: center; }
+.rla-manage-foot { padding: 12px 0 4px; display: flex; justify-content: flex-end; }
+
+/* Nút thao tác trong bảng tiêu chí */
+.rla-table .rla-icon-btn { margin: 2px 3px 2px 0; }
+.rla-icon-btn--danger:hover { border-color: var(--m4); color: var(--m4); }
+.rla-icon-btn--orange {
+    background: var(--rla-brand); color: #fff;
+    border-color: transparent;
+    box-shadow: 0 3px 10px rgba(235,128,35,.32);
+}
+.rla-icon-btn--orange:hover { background: var(--rla-brand-d); color: #fff; border-color: transparent; }
+
+/* Modal footer */
+.rla-modal__foot {
+    display: flex; justify-content: flex-end; gap: 10px;
+    padding: 12px 16px;
+    border-top: 1px solid var(--rla-border);
+    background: #fafbfc;
+    border-radius: 0 0 16px 16px;
+}
+@media (max-width: 767.98px) {
+    .rla-modal__foot { flex-direction: column-reverse; }
+    .rla-modal__foot .rla-btn { width: 100%; }
+}
+
+/* =========================================================================
+   POLISH — chuyển động mượt, micro-interaction (UX/UI)
+   ========================================================================= */
+
+/* Cuộn mượt toàn trang */
+html { scroll-behavior: smooth; }
+
+/* ---------- Hiệu ứng xuất hiện khi tải trang (fade + trượt lên) ---------- */
+@keyframes rla-enter {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.rla-wrap > .rla-hero,
+.rla-wrap > .rla-card,
+.rla-wrap > .rla-submit-area {
+    animation: rla-enter .5s cubic-bezier(.22, .61, .36, 1) backwards;
+}
+/* Độ trễ xen kẽ tạo cảm giác tầng lớp */
+.rla-wrap > .rla-hero            { animation-delay: .02s; }
+.rla-wrap > .rla-card:nth-of-type(1) { animation-delay: .08s; }
+.rla-wrap > .rla-card:nth-of-type(2) { animation-delay: .14s; }
+.rla-wrap > .rla-card:nth-of-type(3) { animation-delay: .20s; }
+.rla-wrap > .rla-card:nth-of-type(4) { animation-delay: .26s; }
+.rla-wrap > .rla-submit-area     { animation-delay: .30s; }
+
+/* ---------- Input: hover làm nổi nhẹ trước khi focus ---------- */
+.rla-input:hover:not(:focus),
+.rla-textarea:hover:not(:focus) {
+    border-color: #d8c3ad;
+    background: #fff;
+}
+
+/* ---------- Segmented & nút sao: phản hồi khi nhấn ---------- */
+.rla-seg label:active { transform: scale(.96); }
+.rla-seg input:checked + label {
+    box-shadow: 0 4px 12px rgba(235, 128, 35, .28);
+}
+
+/* Card nâng nhẹ khi rê chuột (chỉ desktop, tinh tế) */
+@media (min-width: 768px) and (hover: hover) {
+    .rla-card {
+        transition: box-shadow .25s ease, transform .25s ease;
+    }
+    .rla-card:hover {
+        box-shadow: 0 6px 20px rgba(15, 23, 42, .08);
+        transform: translateY(-2px);
+    }
+}
+
+/* Focus rõ ràng cho người dùng bàn phím */
+.rla-btn-submit-form:focus-visible,
+.rla-btn:focus-visible {
+    outline: 3px solid rgba(235, 128, 35, .45);
+    outline-offset: 2px;
+}
+
+/* ---------- Tôn trọng tùy chọn giảm chuyển động ---------- */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-delay: 0s !important;
+        transition-duration: .001ms !important;
+    }
+}
+
+/* =========================================================================
+   TRANG THÊM TIÊU CHÍ (ThemTieuChi.aspx)
+   ========================================================================= */
+
+.rla-status-radios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    padding: 4px 0;
+}
+.rla-radio-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+.rla-radio-item input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--rla-brand);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* Nút hành động cuối card */
+.rla-form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid #f0ece8;
+}
+@media (max-width: 767.98px) {
+    .rla-form-actions {
+        flex-direction: column-reverse;
+    }
+    .rla-form-actions .rla-btn,
+    .rla-form-actions input[type="submit"],
+    .rla-form-actions a.rla-btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+}
