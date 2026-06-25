@@ -43,6 +43,7 @@
                     <asp:LinkButton runat="server" ID="btnExcel" CssClass="rla-icon-btn" OnClick="btnExcel_Click">
                         <span>⬇️</span> Xuất Excel
                     </asp:LinkButton>
+                    <a href='<%= ResolveUrl("~/MaQR") %>' class="rla-icon-btn">📱 Mã QR</a>
                     <a href='<%= ResolveUrl("~/QuanTriKhaoSat/ThemTieuChi") %>' class="rla-icon-btn rla-icon-btn--orange">➕ Thêm tiêu chí</a>
                 </div>
             </div>
